@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030142708) do
+ActiveRecord::Schema.define(version: 20131101141638) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20131030142708) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "post_categories", force: true do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+  end
+
+  add_index "post_categories", ["category_id"], name: "index_post_categories_on_category_id"
+  add_index "post_categories", ["post_id"], name: "index_post_categories_on_post_id"
+
   create_table "posts", force: true do |t|
     t.string   "url"
     t.string   "title"
@@ -38,14 +46,6 @@ ActiveRecord::Schema.define(version: 20131030142708) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "posts_categories", force: true do |t|
-    t.integer "post_id"
-    t.integer "category_id"
-  end
-
-  add_index "posts_categories", ["category_id"], name: "index_posts_categories_on_category_id"
-  add_index "posts_categories", ["post_id"], name: "index_posts_categories_on_post_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
