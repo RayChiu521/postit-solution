@@ -1,9 +1,11 @@
-<p>
-	<%= @post.title %>
+<p class="pull-right">
+	[<%= link_to "edit", edit_post_path(@post) %>]
 </p>
-<hr>
 
+<h4><%= @post.title %></h4>
+<p>
+	<%= @post.url %>
+</p>
 <p>
 	<%= @post.description %>
 </p>
-
