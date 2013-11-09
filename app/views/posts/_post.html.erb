@@ -3,6 +3,9 @@
 		<p>
 			<%= render post.categories %>
 		</p>
+		<p>
+			<%= link_to post.title, fix_url(post.url) %>
+		</p>
 		<p><%= post.description %></p>
 		<p>
 			<span class="quiet">posted by</span> <%= post.creator.username %>
