@@ -1,0 +1,25 @@
+<h4>Create a category</h4>
+
+<div class="well">
+	<%= form_for @category do |f| %>
+		<% if @category.errors.any? %>
+			<div class="row">
+				<div class="alert alert-error row8">
+					<h5>Please fix the following errors:</h5>
+					<ul>
+						<% @category.errors.full_messages.each do	|msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		<% end %>
+	  <div class="control-group">
+	  	<%= f.label :name %>
+	  	<%= f.text_field :name %>
+	  </div>
+		<br/>
+
+		<%= f.submit "Create Category", class: "btn btn-primary" %>
+	<% end %>
+</div>
