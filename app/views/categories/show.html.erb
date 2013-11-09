@@ -1,5 +1,5 @@
 <h4>Showing Category: <%= @category.name %></h4>
 
 <% @category.posts.each do |post| %>
-	<li><%= link_to post.title, post_path(post) %></li>
+	<%= render "post", post: post %>
 <% end %>
