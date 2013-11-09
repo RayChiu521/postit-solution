@@ -1,5 +1,5 @@
 <h4>Showing Category: <%= @category.name %></h4>
 
 <% @category.posts.each do |post| %>
-	<%= render "post", post: post %>
+	<%= render "posts/post", post: post %>
 <% end %>
