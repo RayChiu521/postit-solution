@@ -2,6 +2,9 @@
 	[<%= link_to "edit", edit_post_path(@post) %>]
 </p>
 
+<p>
+	<%= render @post.categories %>
+</p>
 <h4><%= @post.title %></h4>
 <p>
 	<%= @post.url %>
