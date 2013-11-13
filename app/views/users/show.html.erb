@@ -1,0 +1,15 @@
+<h4>User profile</h4>
+
+<p class="pull-right">
+	[<%= link_to 'destroy', user_path(@user), method: :delete %>]
+</p>
+
+
+<div class="well">
+	<%= form_for @user do |f| %>
+		<div class="control-group">
+			<%= f.label :username %>
+			<%= @user.username %>
+		</div>
+	<% end %>
+</div>
