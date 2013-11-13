@@ -1,6 +1,7 @@
 <h4>User profile</h4>
 
 <p class="pull-right">
+	[<%= link_to 'edit', edit_user_path(@user) %>]
 	[<%= link_to 'destroy', user_path(@user), method: :delete %>]
 </p>
 
