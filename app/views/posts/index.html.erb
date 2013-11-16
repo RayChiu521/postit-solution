@@ -1,4 +1,4 @@
-<h4>All posts!</h4>
+<%= render "shared/content_title", title: "All posts!" %>
 
 <% @posts.each do |post| %>
 	<%= render "post", post: post %>
