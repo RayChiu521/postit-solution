@@ -4,11 +4,12 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all.sort_by{ |x| Vote.total_votes(x) }.reverse
+    @posts = Post.list
   end
 
   def show
     @comment = Comment.new
+    @comments = @post.comments.list
   end
 
   def new

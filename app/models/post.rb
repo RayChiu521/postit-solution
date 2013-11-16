@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
 	has_many :categories, :through => :post_categories, dependent: :destroy
 	has_many :votes, as: :voteable
 
+	scope :list, -> { all.sort_by{ |x| Vote.total_votes(x) }.reverse }
+
 	validates :title, presence: true, length: {minimum: 5}
 	validates :description, presence: true
 	validates :url, presence: true, uniqueness: true

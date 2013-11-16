@@ -3,5 +3,7 @@ class Comment < ActiveRecord::Base
 	belongs_to :post
 	has_many :votes, as: :voteable
 
+	scope :list, -> { all.sort_by{ |x| Vote.total_votes(x) }.reverse }
+
 	validates :body, presence: true
 end
