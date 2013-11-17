@@ -10,6 +10,10 @@
 			<%= f.label :password %>
 			<%= f.password_field :password %>
 		</div>
+		<div class="control-group">
+			<%= f.label :time_zone %>
+			<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
+		</div>
 
 		<br />
 		<%= f.submit @user.new_record? ? 'Create User' : 'Edit User', class: 'btn btn-primary' %>
