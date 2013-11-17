@@ -1,4 +1,4 @@
-<%= render "shared/content_title", title: "Showing Category: <%= @category.name %>" %>
+<%= render "shared/content_title", title: "Showing Category: #{@category.name}".html_safe %>
 
 <% @category.posts.each do |post| %>
 	<%= render "posts/post", post: post %>
