@@ -1,13 +1,15 @@
 <div class="row">
 	<% if logged_in? %>
 	<div class="span0 well">
-		<%= link_to vote_post_path(post, vote: true), title: "good", method: "post" do %>
+		<%= link_to vote_post_path(post, vote: true), title: "good", method: "post", remote: true do %>
 			<i class="icon-arrow-up"></i>
 		<% end %>
 		<br />
-		<%= Vote.total_votes(post) %>
+		<span id="post_<%= post.id %>_votes">
+			<%= Vote.total_votes(post) %>
+		</span>
 		<br />
-		<%= link_to vote_post_path(post, vote: false), title: "bad", method: "post" do %>
+		<%= link_to vote_post_path(post, vote: false), title: "bad", method: "post", remote: true do %>
 			<i class="icon-arrow-down"></i>
 		<% end %>
 	</div>

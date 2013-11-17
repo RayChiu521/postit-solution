@@ -1,0 +1,5 @@
+<% if @vote.valid? %>
+	$("#comment_<%= @comment.id %>_votes").html("<%= Vote.total_votes(@comment) %>");
+<% else %>
+	alert("<%= flash[:error] %>");
+<% end %>
