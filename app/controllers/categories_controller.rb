@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   skip_before_action :require_user, only: [:show]
+  before_action :require_admin, only: [:new, :create]
 
 	def new
 		@category = Category.new

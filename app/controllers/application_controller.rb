@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :require_user
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :is_admin?
 
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,12 +15,22 @@ class ApplicationController < ActionController::Base
   	!!current_user
   end
 
+  def is_admin?
+    current_user and current_user.admin?
+  end
+
+  def require_admin
+    access_denied("You can't do that.") unless logged_in? and current_user.admin?
+  end
+
+  def access_denied(msg = "You can't do that.")
+    flash[:error] = msg
+    redirect_to root_path
+  end
+
   private
 
   def require_user
-  	unless logged_in?
-      flash[:error] = "Please log in."
-  		redirect_to root_path
-  	end
+    access_denied("Please log in.") unless logged_in?
   end
 end

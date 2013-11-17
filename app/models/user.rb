@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
 	def to_param
 		self.slug
 	end
+
+	def admin?
+		self.role.to_s.to_sym == :admin
+	end
 end

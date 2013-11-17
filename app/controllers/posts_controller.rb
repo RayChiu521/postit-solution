@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update, :vote]
+  before_action :set_post, only: [:show, :edit, :update, :vote]
+	before_action :require_modifiable, only: [:edit, :update, :destroy]
   skip_before_action :require_user, only: [:index, :show]
 
+  helper_method :can_modify?
 
   def index
     @posts = Post.list
@@ -62,5 +64,13 @@ class PostsController < ApplicationController
 
   def set_post
   	@post = Post.find_by(slug: params[:id])
+  end
+
+  def can_modify?
+    (is_admin? or (current_user and @post and @post.creator == current_user))
+  end
+
+  def require_modifiable
+    access_denied unless can_modify?
   end
 end

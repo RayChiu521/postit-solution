@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if can_modify? %>
 	<p class="pull-right">
 		[<%= link_to "edit", edit_post_path(@post) %>]
 	</p>
