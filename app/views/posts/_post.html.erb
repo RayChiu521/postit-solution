@@ -6,7 +6,7 @@
 		<% end %>
 		<br />
 		<span id="post_<%= post.id %>_votes">
-			<%= Vote.total_votes(post) %>
+			<%= post.total_votes %>
 		</span>
 		<br />
 		<%= link_to vote_post_path(post, vote: false), title: "bad", method: "post", remote: true do %>
