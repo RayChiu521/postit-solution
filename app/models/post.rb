@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 
 	include VoteableHenryk
+	include Sluggable
 
 	belongs_to :creator, class_name: "User", foreign_key: "user_id"
 	has_many :comments, dependent: :destroy
@@ -14,13 +15,6 @@ class Post < ActiveRecord::Base
 	validates :description, presence: true
 	validates :url, presence: true, uniqueness: true
 
-	before_create :generate_slug
+	sluggable_column :title
 
-	def generate_slug
-		self.slug = self.title.gsub(/[\s\/\.\?\\]/, "-").downcase
-	end
-
-	def to_param
-		self.slug
-	end
 end
