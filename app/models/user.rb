@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	include Sluggable
+	include SluggableHenryk
 
 	has_many :posts, dependent: :destroy
 	has_many :comments, dependent: :destroy

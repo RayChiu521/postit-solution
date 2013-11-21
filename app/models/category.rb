@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 
-	include Sluggable
+	include SluggableHenryk
 
 	has_many :post_categories
 	has_many :posts, :through => :post_categories, dependent: :destroy
