@@ -17,6 +17,8 @@ gem 'bcrypt-ruby', '= 3.0.1'
 gem 'voteable_henryk', path: '/Users/ray_s521/Documents/RorCode/test-gem'
 gem 'sluggable_henryk', path: '/Users/ray_s521/Documents/RorCode/test-gem'
 
+gem 'twilio-ruby'
+
 group :doc do
   gem 'sdoc', require: false
 end

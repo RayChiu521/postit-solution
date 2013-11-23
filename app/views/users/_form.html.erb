@@ -14,6 +14,10 @@
 			<%= f.label :time_zone %>
 			<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
 		</div>
+		<div class="control-group">
+			<%= f.label :phone %>
+			<%= f.text_field :phone %>
+		</div>
 
 		<br />
 		<%= f.submit @user.new_record? ? 'Create User' : 'Edit User', class: 'btn btn-primary' %>
